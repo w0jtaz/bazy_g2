@@ -18,7 +18,12 @@ PKT #3
 3)select * from kreatura  order by dataUr asc limit 5;
 
 PKT #4
-1) select distinct(rodzaj) from zasob;
+1) select distinct rodzaj from zasob;
 2) select concat(nazwa, " - ",  rodzaj) from kreatura where rodzaj like 'wi%';
-3)
+3) select nazwa, ilosc*waga as waga_calkowita from zasob where year(dataPozyskania) between 2000 and 2007;
+
+PKT #5
+1) select nazwa, ilosc*waga*0.7 as 'masaWlasciwa', ilosc*waga*0.3 as 'wagaOdpadu' from zasob;
+2) select nazwa from zasob where rodzaj is null;
+3)select distinct rodzaj, nazwa from zasob where nazwa like'Ba%' OR nazwa like '%os' order by rodzaj asc;
 
