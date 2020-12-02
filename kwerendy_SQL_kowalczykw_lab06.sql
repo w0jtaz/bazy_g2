@@ -25,7 +25,12 @@ PKT #4
 
 PKT #5
 1) select k.rodzaj, avg(z.ilosc*z.waga) from kreatura as k inner join ekwipunek as e inner join zasob as z on k.idKreatury=e.idKreatury and e.idZasobu=z.idZasobu where k.rodzaj!='malpa' and k.rodzaj!='waz' group by k.rodzaj having sum(e.ilosc)<30;
-2) 
+2) **** z UNION ****
+select 'najmlodsza',a.maxData, b.nazwa, a.rodzaj from (select max(dataUr) maxData, rodzaj from kreatura group by rodzaj) a, (select nazwa, dataUr from kreatura) b where a.maxData = b.dataUr
+union select 'najstarsza',a.minData, b.nazwa, a.rodzaj from (select min(dataUr) minData, rodzaj from kreatura group by rodzaj) a, (select nazwa, dataUr from kreatura) b where a.minData = b.dataUr
+**** krótka wersja ****
+select a.nazwa, a.rodzaj, a.dataUr from kreatura a, (SELECT min(dataUr) min, max(dataUr) max
+from kreatura group by rodzaj) b WHERE b.min = a.dataUr OR b.max=a.dataUr;
 
 
 
