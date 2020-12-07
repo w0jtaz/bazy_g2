@@ -21,7 +21,7 @@ PKT #4
 1)	SELECT w.nazwa,sum(length(et.dziennik)) as sumaIlosci from wyprawa w inner join etapy_wyprawy et on w.id_wyprawy=et.idEtapu group by w.nazwa having sumaIlosci<400;
 2)
 
-PKT #4
+PKT #5
 1)
 
 
